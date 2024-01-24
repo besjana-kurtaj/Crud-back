@@ -8,8 +8,6 @@ namespace Crud_Back.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize] // Add this attribute to restrict access to authenticated users
-
     public class ProductController : Controller
     {
         private readonly CrudDbContext _context;
@@ -36,17 +34,16 @@ namespace Crud_Back.Controllers
         }
         [HttpGet]
         [Route("{id:int}")]
-        public async Task<IActionResult> GetEmployee([FromRoute] string id)
+        public async Task<IActionResult> GetProduct([FromRoute] string id)
         {
             var prod = await _context.Products.FirstOrDefaultAsync(x => x.Id== id);
             return Ok(prod);
         }
         [HttpPut]
         [Route("{id:int}")]
-        public async Task<IActionResult> UpdateEmployee([FromRoute] string id, Product updateProd)
+        public async Task<IActionResult> UpdateProduct([FromRoute] string id, Product updateProd)
         {
             var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
-            //  employee.firstName = updateEmp.firstName;
             product.Id = updateProd.Id;
             product.Name = updateProd.Name;
             product.Price = updateProd.Price;
@@ -60,7 +57,7 @@ namespace Crud_Back.Controllers
 
             if (product == null)
             {
-                return NotFound(); // or appropriate response for not found
+                return NotFound(); 
             }
 
             _context.Products.Remove(product);
