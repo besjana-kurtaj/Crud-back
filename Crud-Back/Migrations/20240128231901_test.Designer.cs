@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Crud_Back.Migrations
 {
     [DbContext(typeof(CrudDbContext))]
-    [Migration("20240124150119_fix-database")]
-    partial class fixdatabase
+    [Migration("20240128231901_test")]
+    partial class test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,9 +23,8 @@ namespace Crud_Back.Migrations
 
             modelBuilder.Entity("Crud_Back.Models.Product", b =>
                 {
-                    b.Property<int?>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("Id")
+                        .HasColumnType("varchar(255)");
 
                     b.Property<string>("Name")
                         .HasColumnType("longtext");

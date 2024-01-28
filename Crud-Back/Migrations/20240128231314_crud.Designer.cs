@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Crud_Back.Migrations
 {
     [DbContext(typeof(CrudDbContext))]
-    [Migration("20240124085859_table-user")]
-    partial class tableuser
+    [Migration("20240128231314_crud")]
+    partial class crud
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,12 +54,6 @@ namespace Crud_Back.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Password")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Role")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Token")
                         .HasColumnType("longtext");
 
                     b.Property<string>("UserName")

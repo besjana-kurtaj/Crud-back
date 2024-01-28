@@ -27,7 +27,9 @@ namespace Crud_Back.Controllers
         [Route("Create")]
         public async Task<IActionResult> AddProduct([FromBody] Product product)
         {
-           // product.Id = Guid.NewGuid();
+            if (product == null)
+                return BadRequest();
+            // product.Id = Guid.NewGuid();
             await _context.Products.AddAsync(product);
             await _context.SaveChangesAsync();
             return Ok(product);
